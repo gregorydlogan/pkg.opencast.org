@@ -76,15 +76,6 @@
 	apt-get install opencast-3-allinone
 			</pre>
 		</div>
-
-		<!--
-		<h5>Fedora</h5>
-		<div class="repocontent light">
-			<pre>
-	Fedora is available from the testing repository only.
-			</pre>
-		</div>
-		-->
 	</div>
 </div>
 
@@ -120,30 +111,45 @@
 	# Add Opencast repository, as root
 	cd /etc/apt/sources.list.d/
         echo "deb https://[YOUR_USERNAME]:[YOUR_PASSWORD]@pkg.opencast.org/debian testing/" | \
-               tee opencast.list
+               tee opencast-testing.list
 			</pre>
 		</div>
+	</div>
+</div>
 
-		<!--
-		<h5>Fedora</h5>
+<div class="wrapper light">
+	<div class="wrapper-inner">
+
+		<h2>Nightly repository</h2>
+
+		<p>For automated builds, updated nightly, you can enable the
+		Opencast Nightly Repositories. These packages are not checked by a human, so 
+                stability is not guaranteed.  Do not use this for productive systems.</p>
+
+		<p>To enable the nightly repository first install the regular
+		repositories and then follow these steps:</p>
+
+		<h5>CentOS/RHEL/Scientific Linux 7.x</h5>
 		<div class="repocontent">
 			<pre>
 	# Add Opencast repository.
 	cd /etc/yum.repos.d
-	curl -O {{ config.repourl }}/opencast-testing.repo \
-		-d 'version=$releasever' -d os=fc \
-		-u {{ username }}
-
-	# Add rpmfusion repository.
-	yum localinstall --nogpgcheck \
-		http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
-		http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-
-	# Install Opencast with all its dependencies.
-	yum install opencast22-allinone
+	curl -O {{ config.repourl }}/opencast-nightly.repo \
+		 -d version=7 -d os=el -u {{ username }}
 			</pre>
 		</div>
-		-->
+
+		<h5>Debian/Ubuntu</h5>
+		<div class="repocontent light">
+			<pre>
+        # Add the stable repository, as above
+
+	# Add Opencast repository, as root
+	cd /etc/apt/sources.list.d/
+        echo "deb https://[YOUR_USERNAME]:[YOUR_PASSWORD]@pkg.opencast.org/debian unstable/" | \
+               tee opencast-unstable.list
+			</pre>
+		</div>
 	</div>
 </div>
 

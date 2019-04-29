@@ -73,6 +73,7 @@ def home():
 
 @app.route('/opencast.repo', methods=['GET', 'POST'])
 @app.route('/opencast-testing.repo', methods=['GET', 'POST'])
+@app.route('/opencast-nightly.repo', methods=['GET', 'POST'])
 def repofile():
     if not request.authorization:
         return '', 401
